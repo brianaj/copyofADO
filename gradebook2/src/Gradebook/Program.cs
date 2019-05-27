@@ -6,16 +6,14 @@ namespace gradebook2
     {
         static void Main(string[] args)
         {
-            var numbers = new double[3];
-            var x=22.5; //using var (implictily typed) requires intialization
-            double y=17.8;
-            numbers[0] =x;
-            numbers[1] =y;
-            numbers[2] =42.2;
+            //using var (implictily typed) requires intialization
+            var numbers = new []{22.5, 42.2, 17.8};
 
-            double result;
-            result = numbers[0] + numbers[1] + numbers[2];
-//            for(int i =0; i<numbers.GetLength; i++)
+            double result =0;
+            
+           foreach(var num in numbers){
+               result += num;
+           }
 
 
             Console.WriteLine($"The result is: {result}");
