@@ -8,7 +8,6 @@ namespace gradebook2
         static void Main(string[] args)
         {
             //using var (implictily typed) requires intialization
-            var numbers = new []{22.5, 42.2, 17.8};
             var grades = new List<double>(){22.5, 42.2, 17.8};
             grades.Add(13);
 
@@ -21,7 +20,8 @@ namespace gradebook2
            var avg = result/(grades.Count);
 
             Console.WriteLine($"The result is: {result}");
-            Console.WriteLine($"The average grade is: {avg}");
+            //formatting floating point numbers
+            Console.WriteLine($"The average grade is: {avg:N2}");
             
             
 
