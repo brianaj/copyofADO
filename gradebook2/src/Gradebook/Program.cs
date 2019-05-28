@@ -11,8 +11,11 @@ namespace gradebook2
             var grades = new List<double>(){22.5, 42.2, 17.8};
             grades.Add(13);
 
-            var book = new Book(); 
+            var book = new Book("Math Book"); 
             book.AddGrade(89.1);
+            book.AddGrade(75.9);
+            
+        
 
 
             double result =0;    
