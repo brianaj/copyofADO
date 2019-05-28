@@ -11,6 +11,8 @@ namespace gradebook2
             var grades = new List<double>(){22.5, 42.2, 17.8};
             grades.Add(13);
 
+            var Book = new Book(); 
+
 
             double result =0;    
            foreach(var grade in grades){
