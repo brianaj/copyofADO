@@ -22,18 +22,6 @@ namespace gradebook2
             Console.WriteLine($"The result is: {result}");
             //formatting floating point numbers
             Console.WriteLine($"The average grade is: {avg:N2}");
-            
-            
-
-
-            if(args.Length > 0)
-            {
-                Console.WriteLine($"Hello {args[0]}!");
-            }
-            else
-            {
-                Console.WriteLine("Hello!");
-            }
 
         }
     }
