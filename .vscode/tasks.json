@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/gradebook2/gradebook2.csproj"
+                "${workspaceFolder}/gradebook2/src/Gradebook/gradebook2.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -17,7 +17,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/gradebook2/gradebook2.csproj"
+                "${workspaceFolder}/gradebook2/src/Gradebook/gradebook2.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -28,7 +28,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/gradebook2/gradebook2.csproj"
+                "${workspaceFolder}/gradebook2/src/Gradebook/gradebook2.csproj"
             ],
             "problemMatcher": "$tsc"
         }
