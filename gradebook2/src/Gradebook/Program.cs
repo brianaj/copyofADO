@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace gradebook2
+namespace Gradebook
 {
     class Program
     {
@@ -17,7 +17,11 @@ namespace gradebook2
             book.AddGrade(65.3);
             book.AddGrade(40.6);
             book.AddGrade(95);
-            book.showStats();
+            var stats = book.GetStats();
+            Console.WriteLine($"The highest grade is: {stats.High:N2}");
+            Console.WriteLine($"The lowest grade is: {stats.Low:N2}");
+            Console.WriteLine($"The average grade is: {stats.Average:N2}");
+
 
         }
     }

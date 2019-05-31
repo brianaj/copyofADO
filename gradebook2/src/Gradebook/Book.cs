@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 
-namespace gradebook2{
-    class Book
+namespace Gradebook{
+    public class Book
     {
         List<double> grades;
         string name;
@@ -15,8 +15,7 @@ namespace gradebook2{
         {
             grades.Add(grade);
         }
-
-        public void showStats()
+        public Statistics GetStats()
         {
             var highGrade = double.MinValue;
             var lowGrade = double.MaxValue;
@@ -28,10 +27,13 @@ namespace gradebook2{
            }
 
            var avg = result/(grades.Count);
-           //formatting floating point numbers
-            Console.WriteLine($"The highest grade is: {highGrade:N2}");
-            Console.WriteLine($"The lowest grade is: {lowGrade:N2}");
-            Console.WriteLine($"The average grade is: {avg:N2}");
+
+           Statistics stats = new Statistics();
+           stats.Average = avg;
+           stats.High = highGrade;
+           stats.Low = lowGrade;
+
+           return stats;
         }
     }
 }
