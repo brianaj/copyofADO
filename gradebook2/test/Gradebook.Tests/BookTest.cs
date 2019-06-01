@@ -3,12 +3,12 @@ using Xunit;
 
 namespace Gradebook.Tests
 {
-    public class UnitTest1
+    public class BookTest
     {
 
         //fact is equivalent to @Test
         [Fact]
-        public void Test1()
+        public void BookGetStatsTest()
         {
              var book = new Book("");
 
