@@ -42,6 +42,7 @@ namespace Gradebook{
                     break;
                 default:
                     AddGrade(0);
+                    break;
             }
 
         }
