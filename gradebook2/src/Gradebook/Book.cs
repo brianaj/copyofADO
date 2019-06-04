@@ -5,7 +5,18 @@ namespace Gradebook{
     public class Book
     {
         List<double> grades;
-        public string Name;
+        public string Name{
+            get{
+                return name;
+            }
+            set{
+                if(!string.IsNullOrEmpty(value)){
+                    name = value;
+                }
+            }
+        }
+
+        private string name;
 
         public Book(string name){
             grades = new List<double>();
@@ -22,7 +33,7 @@ namespace Gradebook{
             
         }
 
-        public void AddLetterGrade(char letterGrade){
+        public void AddGrade(char letterGrade){
             switch(letterGrade)
             {
                 case 'A':
