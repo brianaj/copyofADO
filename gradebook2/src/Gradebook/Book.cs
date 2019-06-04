@@ -9,6 +9,9 @@ namespace Gradebook{
             get; set;
         }
 
+        //readonly can only be modified during the inialization and in constructors
+        readonly string Category = "Science";
+
         public Book(string name){
             grades = new List<double>();
             Name = name;
