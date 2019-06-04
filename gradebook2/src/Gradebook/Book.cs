@@ -17,7 +17,7 @@ namespace Gradebook{
                 grades.Add(grade);
             }
             else{
-                Console.WriteLine("Invalid Value");
+                throw new ArgumentException($"Invalid {nameof(grade)}");
             }
             
         }

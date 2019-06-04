@@ -8,15 +8,31 @@ namespace Gradebook
         static void Main(string[] args)
         {
             //using var (implictily typed) requires intialization
-            var grades = new List<double>(){22.5, 42.2, 17.8};
-            grades.Add(13);
-
             var book = new Book("Math Book"); 
-            book.AddGrade(89.1);
-            book.AddGrade(75.9);
-            book.AddGrade(65.3);
-            book.AddGrade(40.6);
-            book.AddGrade(95);
+
+            string input;
+            Console.WriteLine("Enter a grade or q to quit: ");
+            input = Console.ReadLine();
+
+            while (!input.Equals("q")){
+                try{
+                    double inputeGrade = double.Parse(input);
+                    Console.WriteLine("Your input: {0}",inputeGrade);
+                    book.AddGrade(inputeGrade);
+                }catch(FormatException ex){
+                    Console.WriteLine(ex.Message);
+                }catch(ArgumentException ex){
+                    Console.WriteLine(ex.Message);
+                }catch(Exception ex){
+                    Console.WriteLine(ex.Message);
+                    throw;
+                }
+
+
+                Console.WriteLine("Enter a grade or q to quit: ");
+                input = Console.ReadLine();
+            }
+        
             var stats = book.GetStats();
             Console.WriteLine($"The highest grade is: {stats.High:N2}");
             Console.WriteLine($"The lowest grade is: {stats.Low:N2}");
