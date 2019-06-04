@@ -23,7 +23,7 @@ namespace Gradebook.Tests
             Assert.Equal(95,results.High);
             Assert.Equal(40.6,results.Low);
             Assert.Equal(73.18,results.Average,2);// check to the second precision decimal
-            
+            Assert.Equal('C',results.LetterGrade);
 
         }
     }

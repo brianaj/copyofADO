@@ -13,7 +13,38 @@ namespace Gradebook{
         }
         public void AddGrade(double grade)
         {
-            grades.Add(grade);
+            if (grade <= 100 && grade >= 0){
+                grades.Add(grade);
+            }
+            else{
+                throw new ArgumentException($"Invalid {nameof(grade)}");
+            }
+            
+        }
+
+        public void AddLetterGrade(char letterGrade){
+            switch(letterGrade)
+            {
+                case 'A':
+                    AddGrade(90);
+                    break;
+                case 'B':
+                    AddGrade(80);
+                    break;
+                case 'C':
+                    AddGrade(70); 
+                    break;
+                case 'D':
+                    AddGrade(60);
+                    break;
+                case 'F':
+                    AddGrade(50);
+                    break;
+                default:
+                    AddGrade(0);
+                    break;
+            }
+
         }
         public Statistics GetStats()
         {
@@ -32,6 +63,26 @@ namespace Gradebook{
            stats.Average = avg;
            stats.High = highGrade;
            stats.Low = lowGrade;
+
+           
+           switch(avg)
+           {
+            case var d when d >= 90.0:
+                stats.LetterGrade = 'A';
+                break;
+            case var d when d >= 80.0:
+                stats.LetterGrade = 'B';
+                break;
+            case var d when d >= 70.0:
+                stats.LetterGrade = 'C';
+                break;
+            case var d when d >= 60.0:
+                stats.LetterGrade = 'D';
+                break;
+            default:
+                stats.LetterGrade = 'C';
+                break;
+           }
 
            return stats;
         }
