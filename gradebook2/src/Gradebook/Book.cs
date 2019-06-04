@@ -6,17 +6,8 @@ namespace Gradebook{
     {
         List<double> grades;
         public string Name{
-            get{
-                return name;
-            }
-            set{
-                if(!string.IsNullOrEmpty(value)){
-                    name = value;
-                }
-            }
+            get; set;
         }
-
-        private string name;
 
         public Book(string name){
             grades = new List<double>();
