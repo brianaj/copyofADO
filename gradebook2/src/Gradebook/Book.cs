@@ -2,21 +2,36 @@ using System;
 using System.Collections.Generic;
 
 namespace Gradebook{
-    public class Book
+
+    public class NamedObject
     {
-        List<double> grades;
-        public string Name{
-            get; set;
+        public NamedObject(string name)
+        {
+            Name = name;
         }
 
+        public string Name
+        {
+            get;
+            set;
+        }
+
+    }
+
+    public delegate void GradeAddedDelegate(object sender, EventArgs args);
+    public class Book : NamedObject
+    {
+        List<double> grades;
         //readonly can only be modified during the inialization and in constructors
        // readonly string Category = "Science";
 
         //const is equivalent to final static keyword
          const string SUBJECT = "Science";
+         public event GradeAddedDelegate GradeAdded;
 
 
-        public Book(string name){
+        public Book(string name): base(name)
+        {
             grades = new List<double>();
             Name = name;
         }
@@ -24,6 +39,10 @@ namespace Gradebook{
         {
             if (grade <= 100 && grade >= 0){
                 grades.Add(grade);
+                if (GradeAdded!= null)
+                {
+                    GradeAdded(this, new EventArgs());
+                }
             }
             else{
                 throw new ArgumentException($"Invalid {nameof(grade)}");

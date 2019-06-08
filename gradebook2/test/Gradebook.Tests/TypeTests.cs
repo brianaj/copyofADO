@@ -8,18 +8,35 @@ namespace Gradebook.Tests
     public class TypeTests
     {
 
+        int count = 0;
         [Fact]
         public void WriteLogDelegateTest(){
             WriteLogDelegate log;
             //long hand form
             //log = new WriteLogDelegate(ReturnMessage);
             log =ReturnMessage;
-            var result = log("hello");
-            Assert.Equal("hello", result);
+            var result = log("Hello");
+            Assert.Equal("Hello", result);
 
         }
 
+        [Fact]
+        public void WriteLogMulticastDelegateTest(){
+            WriteLogDelegate log =ReturnMessage;
+            log +=ReturnMessage;
+            log +=IncrementMessage;
+            var result = log("Hello");
+            Assert.Equal("hello", result);
+            Assert.Equal(3,count);
+
+        }
+
+        string IncrementMessage(string message){
+            count++;
+            return message.ToLower();
+        }
         string ReturnMessage(string message){
+            count++;
             return message;
         }
         //fact is equivalent to @Test
