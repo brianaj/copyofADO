@@ -18,13 +18,25 @@ namespace Gradebook{
 
     }
 
-    public abstract class Book :NamedObject
+    public abstract class Book :NamedObject, IBook
     {
         public Book(string name) : base(name)
         {
         }
 
+        public abstract event GradeAddedDelegate GradeAdded;
+
         public abstract void AddGrade(double grade);
+
+        public abstract Statistics GetStats();
+    }
+
+    public interface IBook{
+        void AddGrade(double grade);
+        Statistics GetStats();
+        string Name{ get;}
+        event GradeAddedDelegate GradeAdded;
+
     }
 
     public delegate void GradeAddedDelegate(object sender, EventArgs args);
@@ -36,7 +48,7 @@ namespace Gradebook{
 
         //const is equivalent to final static keyword
          const string SUBJECT = "Science";
-         public event GradeAddedDelegate GradeAdded;
+         public override event GradeAddedDelegate GradeAdded;
 
 
         public InMemoryBook(string name): base(name)
@@ -84,7 +96,7 @@ namespace Gradebook{
             }
 
         }
-        public Statistics GetStats()
+        public override Statistics GetStats()
         {
             var highGrade = double.MinValue;
             var lowGrade = double.MaxValue;

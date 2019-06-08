@@ -8,7 +8,7 @@ namespace Gradebook
         static void Main(string[] args)
         {
             //using var (implictily typed) requires intialization
-            var book = new InMemoryBook("Math Book");
+            IBook book = new DiskBook("Math Book");
             //will be invoked twice
             book.GradeAdded += OnGradeAdded;
             book.GradeAdded += OnGradeAdded;
@@ -23,7 +23,7 @@ namespace Gradebook
             Console.WriteLine($"The average letter grade is: {stats.LetterGrade}");
         }
 
-        private static void EnterGrades(Book book)
+        private static void EnterGrades(IBook book)
         {
             string input;
             Console.WriteLine("Enter a grade or q to quit: ");
