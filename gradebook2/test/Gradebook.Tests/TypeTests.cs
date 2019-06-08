@@ -3,9 +3,25 @@ using Xunit;
 
 namespace Gradebook.Tests
 {
+
+    public delegate string WriteLogDelegate(string logMessage);
     public class TypeTests
     {
 
+        [Fact]
+        public void WriteLogDelegateTest(){
+            WriteLogDelegate log;
+            //long hand form
+            //log = new WriteLogDelegate(ReturnMessage);
+            log =ReturnMessage;
+            var result = log("hello");
+            Assert.Equal("hello", result);
+
+        }
+
+        string ReturnMessage(string message){
+            return message;
+        }
         //fact is equivalent to @Test
         [Fact]
         public void Test1()
