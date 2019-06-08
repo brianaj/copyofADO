@@ -10,7 +10,7 @@ namespace Gradebook{
         }
 
         //readonly can only be modified during the inialization and in constructors
-        readonly string Category = "Science";
+       // readonly string Category = "Science";
 
         //const is equivalent to final static keyword
          const string SUBJECT = "Science";
