@@ -98,40 +98,10 @@ namespace Gradebook{
         }
         public override Statistics GetStats()
         {
-            var highGrade = double.MinValue;
-            var lowGrade = double.MaxValue;
-            double result =0;    
-           foreach(var grade in grades){
-               highGrade =Math.Max(highGrade,grade);
-               lowGrade =Math.Min(lowGrade,grade);
-               result += grade;
-           }
-
-           var avg = result/(grades.Count);
-
            Statistics stats = new Statistics();
-           stats.Average = avg;
-           stats.High = highGrade;
-           stats.Low = lowGrade;
 
-           
-           switch(avg)
-           {
-            case var d when d >= 90.0:
-                stats.LetterGrade = 'A';
-                break;
-            case var d when d >= 80.0:
-                stats.LetterGrade = 'B';
-                break;
-            case var d when d >= 70.0:
-                stats.LetterGrade = 'C';
-                break;
-            case var d when d >= 60.0:
-                stats.LetterGrade = 'D';
-                break;
-            default:
-                stats.LetterGrade = 'C';
-                break;
+           foreach(var grade in grades){
+               stats.Add(grade);
            }
 
            return stats;
