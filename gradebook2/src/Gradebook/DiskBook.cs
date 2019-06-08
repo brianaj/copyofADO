@@ -15,9 +15,12 @@ namespace Gradebook
 
         public override void AddGrade(double grade)
         {
-           var streamer = File.AppendText( $"/Users/brijohns/DotNetProjects/gradebook2/gradebook2/src/Gradebook/{Name}.txt");
-           streamer.WriteLine(grade);
-           streamer.Close();
+           using(var streamer = File.AppendText( $"/Users/brijohns/DotNetProjects/gradebook2/gradebook2/src/Gradebook/{Name}.txt"))
+           {
+               streamer.WriteLine(grade);
+           }
+           // using statement will invoke Close or Disponse in a finally block
+        //    streamer.Close();
         }
 
         public override Statistics GetStats()
