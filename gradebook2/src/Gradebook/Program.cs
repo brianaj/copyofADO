@@ -8,7 +8,7 @@ namespace Gradebook
         static void Main(string[] args)
         {
             //using var (implictily typed) requires intialization
-            var book = new Book("Math Book");
+            var book = new InMemoryBook("Math Book");
             //will be invoked twice
             book.GradeAdded += OnGradeAdded;
             book.GradeAdded += OnGradeAdded;

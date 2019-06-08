@@ -18,8 +18,17 @@ namespace Gradebook{
 
     }
 
+    public abstract class Book :NamedObject
+    {
+        public Book(string name) : base(name)
+        {
+        }
+
+        public abstract void AddGrade(double grade);
+    }
+
     public delegate void GradeAddedDelegate(object sender, EventArgs args);
-    public class Book : NamedObject
+    public class InMemoryBook : Book
     {
         List<double> grades;
         //readonly can only be modified during the inialization and in constructors
@@ -30,12 +39,13 @@ namespace Gradebook{
          public event GradeAddedDelegate GradeAdded;
 
 
-        public Book(string name): base(name)
+        public InMemoryBook(string name): base(name)
         {
             grades = new List<double>();
             Name = name;
         }
-        public void AddGrade(double grade)
+        //override keyword must be used to implement abstract class methods
+        public override void AddGrade(double grade)
         {
             if (grade <= 100 && grade >= 0){
                 grades.Add(grade);
